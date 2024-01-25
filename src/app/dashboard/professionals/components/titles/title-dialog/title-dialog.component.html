@@ -1,0 +1,54 @@
+<h2>{{title.title! ? 'Edit title': 'New title'}}</h2>
+<hr>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="titleForm">
+    <div class="row">
+        <div class="col-md-6">
+         <p>
+           <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Name of the title</mat-label>
+            <input matInput formControlName="name">
+           </mat-form-field>
+          </p>
+        </div>
+        <div class="col-md-6">
+            <p>
+              <mat-form-field appearance="outline" class="full-width">
+               <mat-label>Organization</mat-label>
+               <input matInput formControlName="organizationName">
+              </mat-form-field>
+             </p>
+        </div>
+        
+        <div class="col-md-6">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="startMonthYear">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker1">
+                  <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="endMonthYear" >
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker2">
+                  <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+        </div>
+    </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" [ngStyle]="{'color':'#fff'}"
+  (click)="title.title!==null ? editTitle() : addTitle()">Save</button>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
+
+

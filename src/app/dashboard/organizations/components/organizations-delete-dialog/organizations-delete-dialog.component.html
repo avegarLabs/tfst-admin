@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Warning!</h1>
+<div mat-dialog-content>
+  <p>Are you sure to remove {{organization.name}} from your Services?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="deleteOrg(organization.id)">Confirm</button>
+  <button mat-button [mat-dialog-close] cdkFocusInitial>Cancel</button>
+</div> 
+

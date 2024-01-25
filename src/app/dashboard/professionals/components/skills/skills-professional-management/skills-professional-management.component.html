@@ -1,0 +1,29 @@
+<h3>Skills</h3>
+<hr>
+<button mat-mini-fab (click)="addSkill()" color="primary" aria-label="Example icon button with a menu icon">
+  <mat-icon>add</mat-icon>
+</button>
+<div class="container" style="margin-top: 10px;">
+  <div class="row" >
+    <div class="col" *ngFor="let skill of skills">
+     <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>{{skill.skillName}}</mat-card-title>
+        <mat-card-subtitle>{{mapSkillValue(skill.skillLevel)}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions style="margin-top: -20px;">
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-8 text-end">
+          <button mat-icon-button (click)="editSkill(skill)">
+            <mat-icon class="icon-edit">edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteSkill(skill)"><mat-icon class="icon-delete">delete</mat-icon></button>
+        </div>
+      </div>
+      </mat-card-actions>
+    </mat-card>
+    </div>
+  </div>
+
+

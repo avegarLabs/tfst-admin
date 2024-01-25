@@ -1,0 +1,41 @@
+<h3>Titles</h3>
+<hr>
+<button mat-mini-fab (click)="addTitle()" color="primary" aria-label="Example icon button with a menu icon">
+    <mat-icon>add</mat-icon>
+</button>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 top" *ngFor="let item of titles">
+          <!--app-title-card [item]="title"></app-title-card-->
+          <mat-card class="card">
+            <mat-card-header>
+                <mat-card-title>{{item.name}}</mat-card-title>
+                <mat-card-subtitle>Institución: {{item.organizationName}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content> 
+            <div class="row">
+                    <div class="col-md-6"><p>Desde: {{ item.startMonthYear | date: 'MM/yyyy'}}</p></div>
+                    <div class="col-md-6"><p>Hasta: {{ item.endMonthYear | date: 'MM/yyyy' }}</p></div>
+                </div>
+            </mat-card-content>
+            <hr>
+            <mat-card-actions style="margin-top: -25px;">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-9 text-end">
+                        <button mat-icon-button (click)="editTitle(item)">
+                            <mat-icon class="icon-edit">edit</mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon class="icon-delete" (click)="deleteTitle(item)">delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+        </div>
+    </div>
+</div>
+
+

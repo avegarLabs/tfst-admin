@@ -1,0 +1,40 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+
+  .users-table{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+
+
+.agregar{
+  margin-left: 10px;
+  background-color: #15abff;
+}
+
+.icon-edit{
+  color: #03a9f4;
+}
+
+.icon-delete{
+  color: red;
+}
+
+.icon-create{
+  color: rgb(97, 219, 97);
+}
+
+.mat-fab:not([class*=mat-elevation-z]), .mat-mini-fab:not([class*=mat-elevation-z]) {
+  box-shadow: 0px 3px 5px -1px rgba(249, 249, 249, 0.041), 0px 6px 10px 0px rgba(251, 252, 251, 0), 0px 1px 18px 0px rgba(231, 228, 228, 0.12); 
+}

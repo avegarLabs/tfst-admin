@@ -1,0 +1,64 @@
+<div class="users-table">
+    <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+      </mat-form-field>
+      
+      <div class="mat-elevation-z2">
+        <table mat-table [dataSource]="dataSource" matSort>  
+      
+          <!-- ID Column -->
+          <ng-container matColumnDef="picture">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Avatar</th>
+            <td mat-cell *matCellDef="let row"><img mat-list-icon width="40px" height="40px" [src]="row.picture !== null? row.picture.thumbUrl : userAvatar" style="border-radius: 50%; box-shadow: 10px 10px 5px #ccc;
+              -moz-box-shadow: 2px 2px 1px #ccc;
+              -webkit-box-shadow:  2px 2px 1px #ccc;
+              -khtml-box-shadow:  2px 2px 1px #ccc;"></td> 
+          </ng-container>
+      
+          <!-- Progress Column -->
+          <ng-container matColumnDef="country">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Country </th>
+            <td mat-cell *matCellDef="let row">{{row.country.commonName}}</td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+          </ng-container>
+      
+          <!-- Fruit Column -->
+          <ng-container matColumnDef="options">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> User options </th>
+            <td mat-cell *matCellDef="let row"> 
+              <button mat-icon-button (click)="editUser(row)" matTooltip="Edit">
+                <mat-icon class="icon-edit">edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteUser(row)" matTooltip="Delete">
+                <mat-icon class="icon-delete">delete</mat-icon>
+              </button>
+              <button mat-icon-button (click)="createProfessional(row)">
+                <mat-icon class="icon-create" matTooltip="Create Professional Profile">engineering</mat-icon>
+              </button>
+              <button mat-icon-button (click)="createOrganization(row)">
+                <mat-icon class="icon-create" matTooltip="Create Organization Profile">apartment</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      </div>    
+</div>
+
+
+

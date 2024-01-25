@@ -1,0 +1,31 @@
+<mat-card class="job-card" *ngIf="job">
+  <mat-card-header>
+    <mat-card-title>{{job.jobTitle}} </mat-card-title>
+    <mat-card-subtitle>  {{job.ownerName}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="row" [ngStyle]="{'margin-bottom':'12px'}">
+      <p class="col-md-6"><strong>State: <span 
+        [ngStyle]="{'color':job.state==='1'? 'rgb(97, 219, 97)': 'red'}">
+         {{job.state==='1'? 'OPEN': 'CLOSED'}}</span></strong></p>
+      <p class="col-md-6" *ngIf="job.jobLanguagues.length>0"><strong>Languages:</strong> 
+          <span *ngFor="let lang of job.jobLanguagues"> {{lang.languegue}} - {{lang.level | titlecase}}</span>
+      </p>
+      <p class="col-md-6"><strong>Required skills:</strong>
+          <span *ngFor="let skill of job.jobSkills; let last=last"> {{skill.skillName}}<span
+            *ngIf="!last">,</span></span>
+      </p>
+      <p class="col-md-6"><strong>Salary:</strong> {{job.jobsSalaryTypes[0].minAmount}} to {{job.jobsSalaryTypes[0].maxAmount}}
+        {{job.jobsSalaryTypes[0].currency | uppercase}} per {{job.jobsSalaryTypes[0].salaryTypeName | lowercase}}</p>
+      <p class="col-md-6"><strong>Modality:</strong> {{job.jobsJobTypes[0].jobTypeName | titlecase}}</p>
+      <p class="col-md-6"><strong>Horario:</strong> {{job.jobContractTypes[0].contractTypeName | titlecase}}</p>
+    </div>
+    <p>
+      <strong>Description:</strong> {{job.jobDescription}}
+    </p>
+    <p><strong>Requirements:</strong></p>
+    <ul>
+      <li *ngFor="let req of job.jobResponsabilities">{{req.responsibilityDescription}}</li>
+    </ul>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,191 @@
+<h2 mat-dialog-title>{{job.action==='edit'? 'Edit job':'Create job'}}</h2>
+<hr>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="jobForm">
+    <p>
+       <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="jobTitle">
+          <mat-hint style="color:red;" *ngIf="jobForm.get('jobTitle')?.errors?.['required'] && jobForm.get('jobTitle')?.touched">
+            This field is required
+          </mat-hint>
+       </mat-form-field>
+    </p> 
+  
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="jobDescription" rows="5"></textarea>
+        <mat-hint style="color:red;" *ngIf="jobForm.get('jobDescription')?.errors?.['required'] && jobForm.get('jobDescription')?.touched">
+          This field is required
+        </mat-hint>
+    </mat-form-field>
+     <h3 class="section">Job salary</h3> 
+    <hr>
+    <div class="row" formGroupName="jobsSalaryTypes">
+        <div class="col-md-6">
+            <p>
+                <mat-form-field appearance="outline" class="full-width">
+                   <mat-label> Min amount salary range</mat-label>
+                   <input type="number" matInput formControlName="minAmount">
+                   <mat-hint style="color:red;" *ngIf="jobForm.get('minAmount')?.errors?.['required'] && jobForm.get('minAmount')?.touched">
+                    This field is required
+                  </mat-hint>
+                </mat-form-field>
+             </p>
+        </div>
+        <div class="col-md-6">
+          <p>
+              <mat-form-field appearance="outline" class="full-width">
+                 <mat-label>Max amount salary range</mat-label>
+                 <input type="number" matInput formControlName="maxAmount">
+                 <mat-hint style="color:red;" *ngIf="jobForm.get('maxAmount')?.errors?.['required'] && jobForm.get('maxAmount')?.touched">
+                  This field is required
+                </mat-hint>
+              </mat-form-field>
+           </p>
+      </div>
+
+      <div class="col-md-6">
+      <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Currency</mat-label>
+           <mat-select formControlName="currency">
+             <mat-option value="eur">EUR</mat-option>
+             <mat-option value="usd">USD</mat-option>
+           </mat-select>
+           <mat-hint style="color:red;" *ngIf="jobForm.get('currency')?.errors?.['required'] && jobForm.get('currency')?.touched">
+            This field is required
+          </mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Salary type</mat-label>
+           <mat-select formControlName="salaryTypeName">
+             <mat-option *ngFor="let salary of salaryTypes" value={{salary.value}}>{{salary.text}}</mat-option>
+           </mat-select>
+           <mat-hint style="color:red;" *ngIf="jobForm.get('salaryTypeName')?.errors?.['required'] && jobForm.get('salaryTypeName')?.touched">
+            This field is required
+          </mat-hint>
+      </mat-form-field>
+  </div>
+    </div>
+  
+    <h3 class="section">Job specifications</h3>
+    <hr>
+    <div class="row">
+        <div class="col-md-6" formGroupName="jobContractTypes">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Job type</mat-label>
+                 <mat-select formControlName="contractTypeName">
+                   <mat-option *ngFor="let jobT of jobTypes" value={{jobT.value}}>{{jobT.text}}</mat-option>
+                 </mat-select>
+                 <mat-hint style="color:red;" *ngIf="jobForm.get('jobTypeName')?.errors?.['required'] && jobForm.get('jobTypeName')?.touched">
+                  This field is required
+                </mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6" formGroupName="jobsJobTypes">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Localization</mat-label>
+                 <mat-select formControlName="jobTypeName">
+                   <mat-option *ngFor="let loc of localizations" value={{loc.value}}>{{loc.text}}</mat-option>
+                 </mat-select>
+                 <mat-hint style="color:red;" *ngIf="jobForm.get('jobTypeName')?.errors?.['required'] && jobForm.get('jobTypeName')?.touched">
+                  This field is required
+                </mat-hint>
+            </mat-form-field>
+        </div>
+        <ng-container formGroupName="jobLanguages">
+        <div class="col-md-6">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Language</mat-label>
+                 <mat-select formControlName="language">
+                   <mat-option *ngFor="let lan of languages" value={{lan.value}}>{{lan.text}}</mat-option>
+                 </mat-select>
+                 <mat-hint style="color:red;" *ngIf="jobForm.get('language')?.errors?.['required'] && jobForm.get('language')?.touched">
+                  This field is required
+                </mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Languaje level</mat-label>
+                 <mat-select formControlName="level">
+                   <mat-option *ngFor="let lev of languageLevelsTypes" value={{lev.value}}>{{lev.text}}</mat-option>
+                 </mat-select>
+                 <mat-hint style="color:red;" *ngIf="jobForm.get('level')?.errors?.['required'] && jobForm.get('level')?.touched">
+                  This field is required
+                </mat-hint>
+            </mat-form-field>
+        </div>
+      </ng-container>
+    </div>
+    <h3 class="section">Skills required</h3>
+    <hr>
+
+   <!-- SKILLS START-->
+
+   <mat-form-field class="full-width" appearance="outline" >
+    <mat-label>Skills</mat-label>
+    <mat-chip-list #chipList aria-label="Skills">
+      <mat-chip
+        *ngFor="let skill of skills"
+        (removed)="remove(skill)">
+        {{skill}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon> 
+        </button>
+      </mat-chip>
+      <input
+        placeholder="New skill..."
+        #skillInput
+        [formControl]="skillCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let skill of filteredSkills | async" [value]="skill">
+        {{skill}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field> 
+  
+
+    <!--SKILLS END-->
+
+    <h3 class="section">Responsabilities</h3>
+    <hr>
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Responsabilities</mat-label>
+      <mat-chip-list #chipLists aria-label="Responsability selection">
+        <mat-chip *ngFor="let responsibility of responsibilities" (removed)="removeR(responsibility)">
+          {{job.action==='create'? responsibility.name : responsibility.name}}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+        <input placeholder="Type a responsability and press enter to insert another"
+               [matChipInputFor]="chipLists"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCode"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="addR($event)">
+      </mat-chip-list>
+    </mat-form-field>
+  </form>  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="job.action==='create'? saveJob(): updateJob()">Save</button> 
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
+
+
+
+ 
+  
+
+
+
+

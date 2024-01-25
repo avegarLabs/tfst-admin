@@ -1,0 +1,23 @@
+
+.full-width{
+    width: 100%;
+}
+
+.section{
+    margin-top: 10px;
+}
+
+
+.cards{
+    margin-top: 40px;
+    text-align: center;
+}
+
+.card:hover {
+    cursor: pointer;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3%);
+  }
+
+
+  

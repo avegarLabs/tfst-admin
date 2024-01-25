@@ -1,0 +1,42 @@
+button{
+    margin-left: 10px;
+}
+
+h3{
+    margin-bottom: -10px;
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+.mat-fab:not([class*=mat-elevation-z]), .mat-mini-fab:not([class*=mat-elevation-z]) {
+     box-shadow: 0px 3px 5px -1px rgba(249, 249, 249, 0.041), 0px 6px 10px 0px rgba(251, 252, 251, 0), 0px 1px 18px 0px rgba(231, 228, 228, 0.12); 
+}
+
+.mat-icon {
+    color:#fff;
+}
+
+.top{
+    margin-top: 20px;
+}
+
+.cards{
+    margin-top: 40px;
+    text-align: center;
+}
+
+.card:hover {
+    cursor: pointer;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3%);
+  }
+
+  .icon-edit{
+    color: #03a9f4;
+    margin-top: -13px;
+  }
+
+  .icon-delete{
+    color: red;
+    margin-top: -13px;
+  }

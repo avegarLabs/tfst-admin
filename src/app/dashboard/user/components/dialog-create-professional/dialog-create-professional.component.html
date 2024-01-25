@@ -1,0 +1,62 @@
+<h2>Create professional</h2>
+<hr>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="professionalForm">
+        <div class="row">
+            <div class="col-md-6">
+                <p>
+                  <mat-form-field appearance="outline" class="full-width">
+                     <mat-label>Full name</mat-label>
+                     <input matInput formControlName="fullName">
+                     <mat-hint style="color:red;" *ngIf="professionalForm.get('fullName')?.errors?.['required'] && professionalForm.get('fullName')?.touched">
+                       This field is required
+                     </mat-hint>
+                  </mat-form-field>
+                </p> 
+            </div>
+            <div class="col-md-6">
+                <p>
+                  <mat-form-field appearance="outline" class="full-width">
+                     <mat-label>Current role</mat-label>
+                     <input matInput formControlName="role">
+                     <mat-hint style="color:red;" *ngIf="professionalForm.get('role')?.errors?.['required'] && professionalForm.get('role')?.touched">
+                      This field is required
+                    </mat-hint>
+                  </mat-form-field>
+                </p>
+            </div>
+        </div>
+
+        <p>
+          <mat-form-field appearance="outline" class="full-width">
+             <mat-label>Bussines sector</mat-label>
+             <input matInput formControlName="bussines">
+             <mat-hint style="color:red;" *ngIf="professionalForm.get('bussines')?.errors?.['required'] && professionalForm.get('bussines')?.touched">
+               This field is required
+             </mat-hint>
+          </mat-form-field>
+        </p> 
+    
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>About me</mat-label>
+          <textarea matInput formControlName="aboutMe"></textarea>
+          <mat-hint style="color:red;" *ngIf="professionalForm.get('aboutMe')?.errors?.['required'] && professionalForm.get('aboutMe')?.touched">
+            This field is required
+          </mat-hint>
+        </mat-form-field><br>
+    
+          <label class="exp">Level of experience : </label> <br>
+          <div class="row">
+          <mat-radio-group  formControlName="yearsExperience">
+            <mat-radio-button class="col-md-4" value="0-2">0 to 2 years</mat-radio-button>
+            <mat-radio-button class="col-md-4" value="2-7">2 to 7 years</mat-radio-button>
+            <mat-radio-button class="col-md-4" value="7+">7+ years</mat-radio-button>
+          </mat-radio-group>
+          </div>
+      </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button  class="register-btn"(click)="addProfessional()" [disabled]="professionalForm.invalid">Create</button>
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>

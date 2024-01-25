@@ -1,0 +1,44 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .mr{
+    position: fixed;
+    z-index: 990;
+  }
+
+  .mat-drawer {
+   width: 200px;
+   padding-top: 20px;
+   margin-top: 64px;
+   position: fixed;
+  }
+
+  .mat-drawer-content{
+    margin-top: 64px;
+  }
+
+  .menu-button{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+    margin-bottom: 10px;
+
+    mat-icon{
+        margin-right: 8px;
+    }
+  }
+
+@media(min-width:1150px){
+    .menu{
+        display: none;
+    }
+}
+
+@media(max-width:1149px){
+    .itemsNav{
+        display: none;
+    }
+}

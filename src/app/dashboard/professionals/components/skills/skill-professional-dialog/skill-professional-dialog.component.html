@@ -1,0 +1,34 @@
+<h2>{{skillDialog! ? 'Editar skill': 'Nuevo skill'}}</h2>
+<hr>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="skillForm">
+    <div class="row">
+        <div class="col-md-6">
+         <p>
+           <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Skill</mat-label>
+            <input matInput formControlName="skill">
+           </mat-form-field>
+          </p>
+        </div>
+        <div class="col-md-6">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Level</mat-label>
+                 <mat-select formControlName="level">
+                   <mat-option value="1">Newbie</mat-option>
+                   <mat-option value="2">Junior</mat-option>
+                   <mat-option value="3">Intermediate</mat-option>
+                   <mat-option value="4">Senior</mat-option>
+                   <mat-option value="5">Super Senior</mat-option>
+                 </mat-select>
+            </mat-form-field> 
+        </div>  
+      </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" [ngStyle]="{'color':'#fff'}"
+  (click)="skill.skill!==null ? editSkill() : addSkills()">Save</button>
+  <button mat-button mat-dialog-close >Close</button>
+</mat-dialog-actions>
+

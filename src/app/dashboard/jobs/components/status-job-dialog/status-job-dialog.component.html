@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Change status</h2>
+<hr>
+<div>
+  <mat-slide-toggle [(ngModel)]="isChecked"
+    (change)="changeValue()">
+    {{isChecked? 'Open':'Closed'}}
+  </mat-slide-toggle>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+</div>  

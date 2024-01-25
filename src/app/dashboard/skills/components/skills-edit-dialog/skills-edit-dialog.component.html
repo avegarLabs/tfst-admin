@@ -1,0 +1,23 @@
+<h2>{{skill? 'Edit skill': 'Add skill'}}</h2>
+<hr>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="skillForm">
+    <div class="row">
+      <div>
+        <p>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Full name</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+        </p>
+      </div>
+      <div>
+      </div>
+     
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button  mat-dialog-close (click)="skill? update() : addSkill()">{{skill? 'Update': 'Save'}}</button>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

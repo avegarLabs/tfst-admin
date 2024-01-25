@@ -1,0 +1,65 @@
+<h2>Create organization</h2>
+<hr>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="clientForm">
+          <div class="row">
+            <div class="col-md-6">
+             <p>
+               <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Organization name</mat-label>
+                <input matInput formControlName="name">
+                <mat-hint style="color:red;" *ngIf="clientForm.get('name')?.errors?.['required'] && clientForm.get('name')?.touched">
+                  This field is required
+                </mat-hint>
+               </mat-form-field>
+              </p>
+            </div>
+            <div class="col-md-6">
+             <p>
+               <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Sector</mat-label>
+                <input matInput formControlName="sector">
+                <mat-hint style="color:red;" *ngIf="clientForm.get('sector')?.errors?.['required'] && clientForm.get('sector')?.touched">
+                  This field is required
+                </mat-hint>
+               </mat-form-field>
+              </p>
+            </div>    
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+             <p>
+               <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Number of employees</mat-label>
+                <input matInput formControlName="zise">
+                <mat-hint style="color:red;" *ngIf="clientForm.get('zise')?.errors?.['required'] && clientForm.get('zise')?.touched">
+                  This field is required
+                </mat-hint>
+               </mat-form-field>
+              </p>
+            </div>  
+            <div class="col-md-6">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Country</mat-label>
+               <mat-select formControlName="country">
+                 <mat-option *ngFor="let country of countries" value={{country.id}}>{{country.commonName}}</mat-option>
+               </mat-select>
+               <mat-hint style="color:red;" *ngIf="clientForm.get('country')?.errors?.['required'] && clientForm.get('country')?.touched">
+                This field is required
+              </mat-hint>
+             </mat-form-field> 
+         </div> 
+          </div>
+        <mat-form-field appearance="outline" class="full-width">
+             <mat-label>About Us</mat-label>
+             <textarea matInput formControlName="description"></textarea>
+             <mat-hint style="color:red;" *ngIf="clientForm.get('description')?.errors?.['required'] && clientForm.get('description')?.touched">
+              This field is required
+             </mat-hint>
+          </mat-form-field>
+      </form>   
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button  mat-dialog-close class="register-btn" (click)="addOrganization()" [disabled]="clientForm.invalid">Create</button>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

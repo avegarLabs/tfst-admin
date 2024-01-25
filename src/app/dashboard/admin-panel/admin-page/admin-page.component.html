@@ -1,0 +1,38 @@
+<mat-toolbar class="mr">
+    <a mat-button *ngIf="drawer.mode==='over'" (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </a>
+    <span><a routerLink="/" class="jgc-flex jgc-flex-vt-start">
+        <img class="logojg" src="https://devtfststorage.blob.core.windows.net/common/tfst-logo-h.svg" alt="The Full-Stack Team" height="50px" width="120px">
+    </a></span>
+    <span class="example-spacer"></span> 
+ 
+
+    <a mat-button class="itemsNav" (click)="logout()"><mat-icon>logout</mat-icon>Logout</a>
+ 
+    <button class="menu"
+    mat-icon-button
+    [matMenuTriggerFor]="dropMenu">
+    <mat-icon>apps</mat-icon>
+    </button>
+
+
+  <mat-menu #dropMenu="matMenu">
+    <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon>Logout</button>
+    <mat-divider></mat-divider>
+  </mat-menu>   
+ </mat-toolbar>
+
+
+
+  <mat-drawer-container>
+    <mat-drawer #drawer mode="side">
+      <button *ngFor="let item of items" mat-button class="menu-button" routerLink={{item.route}}>
+        <mat-icon>{{item.icon}}</mat-icon>
+        <span>{{item.text}}</span>
+      </button>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>   
+  </mat-drawer-container>

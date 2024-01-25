@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>Home</h1>
+    <div class="row contenedor">
+        <div class="col-md-3 separacion" *ngFor="let item of general$ | async">
+            <mat-card class="card">
+                <div class="row">
+                      <div class="col-md-8">
+                        <p class="number">{{item.quantity}}</p>
+                        <h3>{{item.entityName | titlecase}}</h3>
+                      </div>
+                      <div class="col-md-4">
+                        <mat-icon>{{item.iconName}}</mat-icon>
+                      </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div> 
+
+
+

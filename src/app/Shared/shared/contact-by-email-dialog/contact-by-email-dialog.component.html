@@ -1,0 +1,42 @@
+<div class="container row">
+  <h2 mat-dialog-title>Send e-mail</h2>
+    <form [formGroup]="contactForm">
+      <div class="col-md-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" />
+          <mat-hint style="color:red;" *ngIf="contactForm.get('email')?.errors?.['required'] && contactForm.get('email')?.touched">
+            This field is required
+          </mat-hint>
+          <mat-hint style="color:red;" *ngIf="contactForm.get('email')?.errors?.['email'] && contactForm.get('email')?.touched">
+            This is not a valid email
+        </mat-hint>
+        </mat-form-field>
+      </div>
+    
+      <div class="col-md-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Subject</mat-label>
+          <input matInput formControlName="subject" />
+          <mat-hint style="color:red;" *ngIf="contactForm.get('subject')?.errors?.['required'] && contactForm.get('subject')?.touched">
+            This field is required
+          </mat-hint>
+        </mat-form-field>
+      </div>
+      
+      <div class="col-md-12">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Message</mat-label>
+          <textarea matInput formControlName="message"></textarea>
+          <mat-hint style="color:red;" *ngIf="contactForm.get('message')?.errors?.['required'] && contactForm.get('message')?.touched">
+            This field is required
+           </mat-hint>
+        </mat-form-field>
+      </div>
+  </form>
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onSubmit()">Send</button> 
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</div>
+

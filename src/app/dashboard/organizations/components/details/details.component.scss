@@ -1,0 +1,116 @@
+.example-action-buttons {
+    padding-bottom: 10px;
+  }
+  
+  .example-headers-align .mat-expansion-panel-header-title,
+  .example-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+  
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .example-headers-align .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+
+  .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary{
+    color: #fff;
+  }
+
+  button{
+    background-color: #03a9f4;
+    color: #fff;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+  background-color: #03a9f4;
+}
+
+.mat-icon-button{
+  height: 30px;
+  width: 30px;
+  line-height:30px;
+}
+
+.material-icons {
+  font-size: 18px;
+}
+
+.cardProf{
+  padding-bottom: 40px;
+  margin-top: 15px;
+}
+
+.center{
+  text-align: center;
+}
+
+img{
+  margin-top: 15px;
+  border-radius: 50%;
+}
+
+h2{
+  margin-top: 8px;
+}
+
+.title{
+  margin-top: -15px;
+}
+
+p{
+  margin-top: -7px;
+}
+
+.example-flex-container{
+  padding-left: 20px;
+}
+
+.other{
+  margin-top: 20px;
+  padding-left: 0;
+}
+
+.organization-data .mat-accordion>.mat-expansion-panel-spacing:last-child, .mat-accordion>*:last-child:not(.mat-expansion-panel) .mat-expansion-panel-spacing {
+  height: 100%;
+}
+
+.mat-expansion-panel-header-title {
+  font-size: 19px;
+}
+
+.mat-list-base .mat-list-item .mat-line:nth-child(n+2) {
+  font-size: 13px;
+}
+
+.mat-list-base .mat-list-item .mat-list-icon, .mat-list-base .mat-list-option .mat-list-icon {
+  width: 85px;
+  height: 85px;
+}
+
+@media (max-width: 768px) {
+  .example-action-buttons {
+    text-align: center;
+  }
+
+  .center{
+    margin-bottom: 20px;
+  }
+
+  .organization-data{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .other{
+    padding-right: 0;
+  }
+}
+
+
+  

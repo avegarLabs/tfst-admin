@@ -1,0 +1,107 @@
+<h2 mat-dialog-title>Edit info</h2>
+<hr>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="organizationForm">
+    <div class="row">
+        <div class="col-md-6">
+         <p>
+           <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Organization name</mat-label>
+            <input matInput formControlName="name">
+           </mat-form-field>
+          </p>
+        </div>
+        <div class="col-md-6">
+            <p>
+              <mat-form-field appearance="outline" class="full-width">
+               <mat-label>Size</mat-label>
+               <input matInput formControlName="zise">
+              </mat-form-field>
+             </p>
+        </div>
+
+        <div class="col-md-6">
+            <p>
+              <mat-form-field appearance="outline" class="full-width">
+               <mat-label>Phone</mat-label>
+               <input matInput formControlName="phone">
+              </mat-form-field>
+             </p>
+        </div>
+
+        <div class="col-md-6"> 
+            <p>
+              <mat-form-field appearance="outline" class="full-width">
+               <mat-label>Email</mat-label>
+               <input matInput formControlName="contactEmail">
+              </mat-form-field>
+             </p>
+        </div>
+
+        <div class="col-md-12">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Country</mat-label>
+             <mat-select formControlName="country">
+               <mat-option *ngFor="let country of countries" value={{country.id}}>{{country.commonName}}</mat-option>
+             </mat-select>
+             <mat-hint style="color:red;" *ngIf="organizationForm.get('country')?.errors?.['required'] && organizationForm.get('country')?.touched">
+              This field is required
+            </mat-hint>
+           </mat-form-field> 
+       </div> 
+ 
+        <div class="col-md-12">
+            <p>
+              <mat-form-field appearance="outline" class="full-width">
+               <mat-label>Sector</mat-label>
+               <input matInput formControlName="sector">
+              </mat-form-field>
+             </p>
+        </div> 
+        
+    
+        <div class="col-md-12">
+            <mat-form-field appearance="outline" class="full-width ">
+                <mat-label>About Us</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+             </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+            <p>
+              <mat-form-field appearance="outline" class="full-width">
+               <mat-label>Linkedin profile</mat-label>
+               <input matInput formControlName="linkedInProfile">
+              </mat-form-field>
+             </p>
+        </div>
+
+        <div class="col-md-6">
+            <p>
+              <mat-form-field appearance="outline" class="full-width">
+               <mat-label>Youtube profile</mat-label>
+               <input matInput formControlName="youtubeProfile">
+              </mat-form-field>
+             </p>
+        </div>
+
+        <div class="col-md-12">
+            <p>
+              <mat-form-field appearance="outline" class="full-width">
+               <mat-label>Organization web</mat-label>
+               <input matInput formControlName="organizationWeb">
+              </mat-form-field> 
+             </p>
+        </div>
+
+    </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" [ngStyle]="{'color':'#fff'}" (click)="editInfo()" 
+  >Save</button>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
+
+
+

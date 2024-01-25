@@ -1,0 +1,8 @@
+<mat-card class="big-card">
+    <h2>Management</h2>
+    <ng-container *ngIf="professional">
+        <app-positions-management [professionalId]="professional.id"></app-positions-management>
+        <app-titles-management [professionalId]="professional.id"></app-titles-management>
+        <app-skills-professional-management [professionalId]="professional.id"></app-skills-professional-management>
+    </ng-container>
+</mat-card> 

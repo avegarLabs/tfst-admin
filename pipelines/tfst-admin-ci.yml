@@ -1,0 +1,49 @@
+trigger:
+  branches:
+   include:
+    - development
+    - main    
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- checkout: self
+  clean: true
+- task: Cache@2
+  inputs:
+    key: '**/package-lock.json, !**/node_modules/**/package-lock.json, !**/.*/**/package-lock.json'
+    path: 'node_modules'
+    cacheHitVar: 'TFST_ADMIN_SITE_CACHE_RESTORED'
+- task: CmdLine@2
+  displayName: PRINT CacheRestore
+  inputs:
+    script: 'echo "*** Cache Restored? :: $TFST_ADMIN_SITE_CACHE_RESTORED ***"'
+    
+- task: Npm@1
+  displayName: Install Angular CLI
+  condition: eq(variables['TFST_ADMIN_SITE_CACHE_RESTORED'],False)
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: install -g @angular/cli
+- task: Npm@1
+  displayName: Install Project Dependencies
+  condition: eq(variables['TFST_ADMIN_SITE_CACHE_RESTORED'],False)
+  inputs:
+    verbose: false
+
+- task: CmdLine@2
+  displayName: Build
+  inputs:
+    script: 'npm run build:server '
+    workingDirectory: $(System.DefaultWorkingDirectory)  
+
+- task: ArchiveFiles@2
+  displayName: Archive DIST FOLDER
+  inputs:
+    rootFolderOrFile: dist/
+    includeRootFolder: false
+    
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
